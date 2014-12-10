@@ -39,3 +39,4 @@ gem 'spring',        group: :development
 gem 'byebug', group: [:development, :test]
 
 gem 'bower-rails'
+gem 'authlogic'
