@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# NPM
+/node_modules
+
+# Bower
+/vendor/assets/bower_components
