@@ -40,3 +40,4 @@ gem 'byebug', group: [:development, :test]
 
 gem 'bower-rails'
 gem 'authlogic'
+gem 'activerecord-session_store'
