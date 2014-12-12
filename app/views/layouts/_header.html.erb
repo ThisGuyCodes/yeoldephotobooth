@@ -11,16 +11,16 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <% if false %>
+        <% if current_user %>
           <li><a href="#">Following</a></li>
           <li><a href="#">Followers</a></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if false %>
-          <li><a href="#">Logout</a></li>
+        <% if current_user %>
+          <li><%= link_to 'Logout', logout_url %></li>
         <% else %>
-          <li><a href="#">Login</a></li>
+          <li><%= link_to 'Login', login_url %></li>
           <li><a>or</a></li>
           <li><%= link_to "Register", new_user_path %></li>
         <% end %>
