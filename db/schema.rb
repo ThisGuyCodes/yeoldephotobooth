@@ -13,31 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141213045829) do
 
-  create_table "posts", force: true do |t|
-    t.string   "title",      null: false
-    t.text     "body",       null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
-
-  create_table "sessions", force: true do |t|
-    t.string   "session_id", null: false
-    t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
-
-  create_table "user_sessions", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "username",                       null: false
     t.string   "email",                          null: false
@@ -53,10 +28,28 @@ ActiveRecord::Schema.define(version: 20141213045829) do
     t.integer  "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["last_request_at"], :name => "index_users_on_last_request_at"
+    t.index ["persistence_token"], :name => "index_users_on_persistence_token"
+    t.index ["username"], :name => "index_users_on_username", :unique => true
   end
 
-  add_index "users", ["last_request_at"], name: "index_users_on_last_request_at"
-  add_index "users", ["persistence_token"], name: "index_users_on_persistence_token"
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], :name => "index_posts_on_user_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_posts_user_id"
+  end
+
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], :name => "index_sessions_on_session_id", :unique => true
+    t.index ["updated_at"], :name => "index_sessions_on_updated_at"
+  end
 
 end
