@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  email: MyString
-  password: MyString
+  username: user1
+  email: one@email.com
+  encrypted_password: 400$8$56$f3122461a621de90$93cec69960408c9c44c01767d3dc0ef4ffc3c3e163438c47685c7dc1f7304d55
+  password_salt: NnoVHqPNr4O4MFbRIVR
+  persistence_token: 681ff435b58d1f1ef38765f0b62c6cbe301b15dd7596a9b750b8f72cba73eef1ac2f774ab13b47f97d17ca0659841027fd2e37b20ec93f7c3cf0390d7b720746
 
 two:
-  username: MyString
-  email: MyString
-  password: MyString
+  username: user2
+  email: two@email.com
+  encrypted_password: 400$8$5e$6dd83c8b4de03dba$2ab94397a0a08d15372158351f937d5bd722f8beb2ed07d775ea50317474ed28
+  password_salt: VPp3v7LdYJTWxyCRm8Zr
+  persistence_token: 34c18fc821a7a9e5b3472bb05a590693c18101173ae7616eec140268ad75a8d657bad235a35881d7965714684fc288312eaf6b83c5e9df8c9ed4200c40f0bf0c
