@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = current_user.posts.all.order created_at: :desc
+    if current_user
+      @posts = current_user.posts.all.order created_at: :desc
+    else
+      @posts = Post.all.order created_at: :desc
+    end
   end
 
   # GET /posts/1
@@ -14,7 +18,11 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = current_user.posts.new
+    if not current_user
+      redirect_to :login
+    else
+      @post = current_user.posts.new
+    end
   end
 
   # GET /posts/1/edit
@@ -24,15 +32,19 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.new(post_params)
+    if not current_user
+      redirect_to :login
+    else
+      @post = current_user.posts.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @post.save
+          format.html { redirect_to @post, notice: 'Post was successfully created.' }
+          format.json { render :show, status: :created, location: @post }
+        else
+          format.html { render :new }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

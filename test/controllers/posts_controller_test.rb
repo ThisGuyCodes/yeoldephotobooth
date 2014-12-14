@@ -11,17 +11,9 @@ class PostsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:posts)
   end
 
-  test "should get new" do
+  test "should get new not logged in" do
     get :new
-    assert_response :success
-  end
-
-  test "should create post" do
-    assert_difference('Post.count') do
-      post :create, post: { body: @post.body, title: @post.title }
-    end
-
-    assert_redirected_to post_path(assigns(:post))
+    assert_redirected_to :login
   end
 
   test "should show post" do
