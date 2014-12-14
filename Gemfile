@@ -46,3 +46,4 @@ gem 'schema_plus'
 gem 'schema_validations'
 gem 'bootstrap_form'
 gem 'did_you_mean', group: [:development, :test]
+gem 'pg'
