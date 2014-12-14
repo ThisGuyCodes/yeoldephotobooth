@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/logout' => 'user_sessions#destroy'
   resources :user_sessions
   resources :users
+  resources :posts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
