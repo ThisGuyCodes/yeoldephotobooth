@@ -6,3 +6,14 @@ rvm:
 before_install:
   - gem update --system
   - gem --version
+
+deploy:
+  provider: heroku
+  app: yeoldephotobooth
+  run:
+    - "bundle exec rake db:migrate"
+    - "bundle exec rake cleanup"
+  api_key:
+    secure: Y1ngTlm4is/89u8lGTDcTsAhNhQY5bi9YCeDcpzIQJS/sZVwB99M7BT73M/mu0JuVmxe5yGC7Y7Pz+cu2LsqYNqiCLinXxO2Gj8HXEKCfXrWpvIpBlHXE1Jmcabg/yOV/Ah5AD06J0RowX1hHr7FtmGFFVHJOIOIuJtaok9BCcs=
+  on:
+    branch: master
