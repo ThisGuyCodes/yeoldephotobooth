@@ -1,6 +1,10 @@
-<h1>Editing post</h1>
+<h1>Edit Post</h1>
+
+<% @button = 'Update' %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<br>
+<%= link_to :back do %>
+  <button type="button" class="btn btn-danger">Cancel</button>
+<% end %>

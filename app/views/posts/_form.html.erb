@@ -1,25 +1,6 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= bootstrap_form_for @post, inline_errors: false do |f| %>
+  <%= f.alert_message "Whoops!" %>
+  <%= f.text_field :title, hide_label: true, placeholder: 'Title' %>
+  <%= f.text_area :body, hide_label: true %>
+  <%= f.submit @button, class: "btn btn-primary btn-lg" %>
 <% end %>
