@@ -29,13 +29,13 @@ class UserSessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_session
-      @user_session = UserSession.find
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user_session
+    @user_session = UserSession.find
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_session_params
-      params.require(:user_session).permit(:username, :password)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_session_params
+    params.require(:user_session).permit(:username, :password)
+  end
 end
