@@ -8,6 +8,8 @@
   </p>
 </div>
 
-<%= link_to edit_post_path(@post)  do %>
-  <button type="button" class="btn btn-info">Edit</button>
+<% if current_user == @post.user %>
+  <%= link_to edit_post_path(@post)  do %>
+    <button type="button" class="btn btn-info">Edit</button>
+  <% end %>
 <% end %>
