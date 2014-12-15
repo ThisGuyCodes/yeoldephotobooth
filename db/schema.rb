@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213045829) do
+ActiveRecord::Schema.define(version: 20141215035221) do
 
   create_table "users", force: true do |t|
     t.string   "username",                       null: false
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20141213045829) do
     t.index ["created_at"], :name => "index_posts_on_created_at"
     t.index ["user_id"], :name => "index_posts_on_user_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_posts_user_id"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "post_id",    null: false
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["created_at"], :name => "index_comments_on_created_at"
+    t.index ["post_id"], :name => "index_comments_on_post_id"
+    t.foreign_key ["post_id"], "posts", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_comments_post_id"
   end
 
   create_table "sessions", force: true do |t|
