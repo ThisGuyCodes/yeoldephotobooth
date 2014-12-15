@@ -1,0 +1,19 @@
+<div class="row">
+<div class="col-sm-6 col-md-5 col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= comment.user.username %></h3>
+    </div>
+    <div class="panel-body">
+      <%= comment.body %>
+    </div>
+  </div>
+</div>
+  <div class="col-1">
+    <% if current_user == comment.user %>
+      <%= link_to [comment.post, comment], method: :delete do %>
+        <button type="button" class="btn btn-sm btn-danger">Delete</button>
+      <% end %>
+    <% end %>
+  </div>
+</div>

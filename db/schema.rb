@@ -46,12 +46,15 @@ ActiveRecord::Schema.define(version: 20141215035221) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id",    null: false
+    t.integer  "user_id",    null: false
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["created_at"], :name => "index_comments_on_created_at"
     t.index ["post_id"], :name => "index_comments_on_post_id"
+    t.index ["user_id"], :name => "index_comments_on_user_id"
     t.foreign_key ["post_id"], "posts", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_comments_post_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_comments_user_id"
   end
 
   create_table "sessions", force: true do |t|
