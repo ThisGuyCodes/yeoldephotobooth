@@ -8,7 +8,8 @@ before_install:
   - gem --version
 
 before_script:
-  - bundle exec rake bower:install
+  - npm install
+  - bundle exec rake assets:precompile
 
 deploy:
   provider: heroku
