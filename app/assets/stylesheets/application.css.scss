@@ -12,5 +12,9 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap/dist/css/bootstrap
+ *= require application
  */
+
+$icon-font-path: "bootstrap-sass-official/assets/fonts/bootstrap/";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
