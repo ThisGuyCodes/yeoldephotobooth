@@ -22,3 +22,6 @@
 /vendor/assets/bower_components
 # This is created/managed by rake bower:install
 /vendor/assets/bower.json
+
+# Sublime
+yeoldephotobooth.sublime-workspace
