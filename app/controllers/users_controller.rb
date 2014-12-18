@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @posts = @user.posts.all.order(created_at: :desc)
   end
 
   # GET /users/1/edit
