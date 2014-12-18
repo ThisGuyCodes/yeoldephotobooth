@@ -10,7 +10,7 @@
   </div>
 </div>
   <div class="col-1">
-    <% if current_user == comment.user %>
+    <% if current_user == comment.user or current_user == comment.post.user %>
      <%= link_to "Delete", [comment.post, comment], method: :delete, class: "btn btn-sm btn-danger", data:{ confirm: "You sure?" } %>
     <% end %>
   </div>
