@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1><%= @post.title %> <small>by: <%= @post.user.username %></small></h1>
+  <h1><%= @post.title %> <small>by: <%= link_to @post.user.username, @post.user %></small></h1>
 </div>
 
 <div class="jumbotron">
