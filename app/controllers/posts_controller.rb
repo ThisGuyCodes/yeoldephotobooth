@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :verify_owner, except: [:create, :new, :index, :show]
 
   # GET /posts
   # GET /posts.json
@@ -82,5 +83,11 @@ class PostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def verify_owner
+    if current_user != @post.user
+      redirect_to @post, alert: "Not yours, so you can't do that!"
+    end
   end
 end
