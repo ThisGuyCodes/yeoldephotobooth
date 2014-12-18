@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def index
     if current_user
       @posts = current_user.posts.all.order created_at: :desc
+      @hide_author = true
     else
       @posts = Post.all.order created_at: :desc
     end

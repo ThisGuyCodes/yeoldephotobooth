@@ -1,1 +1,9 @@
-<%= link_to raw("<h3>#{post.title} <small>#{post.created_at}</small></h3>"), post, class: "list-group-item" %>
+<%= link_to post, class: "list-group-item" do %>
+  <h3><%= post.title %>
+    <small><%= post.created_at %>
+      <% unless @hide_author %>
+        by: <%= post.user.username %>
+      <% end %>
+    </small>
+  </h3>
+<% end %>
