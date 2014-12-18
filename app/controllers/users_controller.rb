@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :verify_owner, except: [:show, :create, :new]
+  before_action :verify_owner, except: [:show, :create, :new, :index]
   respond_to :html, :json
+
+  def index
+    @users = User.all
+  end
 
   # GET /users/new
   def new
