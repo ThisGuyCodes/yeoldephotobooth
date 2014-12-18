@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6 col-md-5 col-lg-4">
     <div class="btn-group" role="group">
-      <a class="btn btn-sm btn-default"><%= comment.user.username %></a>
+      <%= link_to comment.user.username, comment.user, class: "btn btn-sm btn-default" %>
       <% if current_user == comment.user or current_user == comment.post.user %>
        <%= link_to "Delete", [comment.post, comment], method: :delete, class: "btn btn-sm btn-danger", data:{ confirm: "You sure?" } %>
       <% end %>
