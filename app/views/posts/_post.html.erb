@@ -1,8 +1,5 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= post.title %> <small><%= post.created_at %></small></h3>
-  </div>
-  <div class="panel-body">
-    <%= post.body %>
-  </div>
-</div>
+<li class="list-group-item">
+  <%= link_to post do %>
+    <h3><%= post.title %> <small><%= post.created_at %></small></h3>
+  <% end%>
+</li>
