@@ -1,5 +1,1 @@
-<li class="list-group-item">
-  <%= link_to post do %>
-    <h3><%= post.title %> <small><%= post.created_at %></small></h3>
-  <% end%>
-</li>
+<%= link_to raw("<h3>#{post.title} <small>#{post.created_at}</small></h3>"), post, class: "list-group-item" %>
