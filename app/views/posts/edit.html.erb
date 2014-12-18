@@ -5,6 +5,7 @@
 <%= render 'form' %>
 
 <br>
-<%= link_to :back do %>
-  <button type="button" class="btn btn-danger">Cancel</button>
-<% end %>
+<div class="btn-group" role="group" aria-label="test">
+  <%= link_to "Cancel", :back, class: "btn btn-warning" %>
+  <%= link_to "Delete", @post, class: "btn btn-danger", method: :delete, data: { confirm: "You sure?" } %>
+</div>

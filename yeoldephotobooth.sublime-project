@@ -18,8 +18,20 @@
     {
       "name": "Run Server",
       "working_dir": "$project_path",
-      "shell": true,
+      "path": "$HOME/.rbenv/shims:$PATH",
       "cmd": ["./bin/bundle", "exec", "rails", "server"]
+    },
+    {
+      "name": "Bundle Install",
+      "working_dir": "$project_path",
+      "path": "$HOME/.rbenv/shims:$PATH",
+      "cmd": ["./bin/bundle", "install"]
+    },
+    {
+      "name": "Rake Migrate",
+      "working_dir": "$project_path",
+      "path": "$HOME/.rbenv/shims:$PATH",
+      "cmd": ["./bin/bundle", "exec", "rake", "db:migrate"]
     }
   ]
 }

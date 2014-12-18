@@ -11,9 +11,7 @@
 </div>
   <div class="col-1">
     <% if current_user == comment.user %>
-      <%= link_to [comment.post, comment], method: :delete do %>
-        <button type="button" class="btn btn-sm btn-danger">Delete</button>
-      <% end %>
+     <%= link_to "Delete", [comment.post, comment], method: :delete, class: "btn btn-sm btn-danger", data:{ confirm: "You sure?" } %>
     <% end %>
   </div>
 </div>
