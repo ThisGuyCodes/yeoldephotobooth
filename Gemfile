@@ -47,3 +47,4 @@ gem 'schema_validations'
 gem 'bootstrap_form'
 gem 'did_you_mean', group: [:development, :test]
 gem 'pg'
+gem 'aws-sdk'
