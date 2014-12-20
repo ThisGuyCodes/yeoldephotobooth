@@ -24,6 +24,7 @@ class PostsController < ApplicationController
       redirect_to :login
     else
       @post = current_user.posts.new
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "posts/${user_id}/#{SecureRandom.uuid}", success_action_status: 201, acl: :public_read)
     end
   end
 
