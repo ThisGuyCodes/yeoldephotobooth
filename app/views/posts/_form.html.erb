@@ -1,6 +1,13 @@
-<%= bootstrap_form_for @post, inline_errors: false do |f| %>
+<script type="text/javascript">
+  s3_direct_post_url = '<%= @s3_direct_post.url %>';
+  s3_direct_post_form_data = <%= @s3_direct_post.fields.to_json.html_safe %>;
+  s3_direct_post_url_host = '//<%= @s3_direct_post.url.host %>/';
+</script>
+
+<%= bootstrap_form_for @post, inline_errors: false, html: {class: 'direct_upload new_post'} do |f| %>
   <%= f.alert_message "Whoops!" %>
   <%= f.text_field :title, hide_label: true, placeholder: 'Title' %>
   <%= f.text_area :body, hide_label: true %>
+  <%= f.file_field :image_key, label: "Upload your picture!" %>
   <%= f.submit @button, class: "btn btn-primary btn-lg" %>
 <% end %>

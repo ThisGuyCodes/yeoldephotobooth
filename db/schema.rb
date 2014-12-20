@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141220103141) do
     t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_url"
+    t.string   "image_key"
     t.index ["created_at"], :name => "index_posts_on_created_at"
     t.index ["user_id"], :name => "index_posts_on_user_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_posts_user_id"

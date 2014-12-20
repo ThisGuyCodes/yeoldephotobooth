@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :get_s3, only: [:new, :edit]
   before_action :verify_owner, except: [:create, :new, :index, :show]
 
   # GET /posts
@@ -24,7 +25,6 @@ class PostsController < ApplicationController
       redirect_to :login
     else
       @post = current_user.posts.new
-      @s3_direct_post = S3_BUCKET.presigned_post(key: "posts/${user_id}/#{SecureRandom.uuid}", success_action_status: 201, acl: :public_read)
     end
   end
 
@@ -55,8 +55,10 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    old_image = @post.image_key
     respond_to do |format|
       if @post.update(post_params)
+        S3_BUCKET.objects[old_image].delete
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -69,6 +71,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    S3_BUCKET.objects[@post.image_key].delete
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
@@ -84,12 +87,16 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image_key)
   end
 
   def verify_owner
     if current_user != @post.user
       redirect_to @post, alert: "Not yours, so you can't do that!"
     end
+  end
+
+  def get_s3
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "posts/#{current_user.id}/#{SecureRandom.uuid}", success_action_status: 201, acl: :public_read)
   end
 end

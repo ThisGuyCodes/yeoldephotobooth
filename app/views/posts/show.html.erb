@@ -6,6 +6,7 @@
   <p class="lead">
   <%= @post.body %>
   </p>
+  <%= image_tag S3_BUCKET.objects[@post.image_key].public_url, class: "img-responsive" %>
 </div>
 
 <% if current_user == @post.user %>
