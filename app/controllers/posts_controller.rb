@@ -71,7 +71,9 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    S3_BUCKET.objects[@post.image_key].delete
+    if @post.image_key
+      S3_BUCKET.objects[@post.image_key].delete
+    end
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
