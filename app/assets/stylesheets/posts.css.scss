@@ -6,7 +6,7 @@ form {
   &.new_post, &.edit_post {
     textarea {
       resize: vertical;
-      min-height: 200px;
+      min-height: 100px;
     }
   }
 }
