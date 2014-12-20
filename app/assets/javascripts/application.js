@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
+//= require jquery.ui/ui/widget
+//= require jquery-file-upload/js/jquery.fileupload
